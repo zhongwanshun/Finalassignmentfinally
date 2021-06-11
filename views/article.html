@@ -1,0 +1,62 @@
+<%- include('header.html') -%>
+    <div class="container mt-4">
+        <nav>
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="/">首页</a></li>
+                <li class="breadcrumb-item">
+                    <a href="/article/list/<%= article.category_id %>">
+                        <!-- 文章类名 -->
+                        <%= article.category_name %>
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <!-- 文章标题 -->
+                    <%= article.title %>
+                </li>
+            </ol>
+        </nav>
+        <div class="card">
+            <div class="card-header bg-white">
+                <h3 class="card-title m-0">
+                    <%= article.title %>
+                </h3>
+                <p class="text-muted small mt-2 m-0">
+                    <!-- 当地时间 -->
+                    <span class="mr-3">发表时间：<%= article.time.toLocaleString() %></span>
+
+                    <span class="mr-1">点击：<%= article.hits %></span>
+                </p>
+            </div>
+            <div class="card-body" id="content">
+                <!-- 注意：下面用的是 '-' 而不是'=' '-'可以解析HTML代码  -->
+                <!-- <%- article.content %> 用 ‘-’ 可以解析HTML代码 -->
+                <%- article.content %>
+            </div>
+            <div class="card-footer bg-white border-0">
+                <% tabs.forEach(item => {%>
+                    <span class="badge badge-pill"><%= item.name %></span>
+                    <% }) %>
+            </div>
+        </div>
+        <nav>
+            <ul class="pagination mt-3">
+                <li class="page-item">
+                    <% if(preArticle){ %>
+                        <!-- 如果上一篇文章存在才显示上一篇文章 -->
+                        <a class="page-link" href="/article/detail/<%= preArticle.id %>">上一篇：<%= preArticle.title %></a>
+                        <% } else { %>
+                            <span class="page-link">人家也是有上限的</span>
+                            <% } %>
+                </li>
+                <li class="page-item ml-auto">
+                    <% if(nextArticle){ %>
+                        <!-- 如果下一篇文章存在才显示下一篇文章 -->
+                        <a class="page-link" href="/article/detail/<%= nextArticle.id %>">下一篇：<%= nextArticle.title %></a>
+                        <% } else { %>
+                            <span class="page-link">人家也是有底线的</span>
+                            <% } %>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <%- include('footer.html') -%>

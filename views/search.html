@@ -1,0 +1,30 @@
+<%- include('header.html') -%>
+    <div class="container mt-5">
+        <h2 class="mb-4">搜索结果（搜索词：
+            <!-- 展示输入框中输入的关键字 -->
+            <%= keyword %> ）</h2>
+        <div class="row row-cols-4">
+            <!-- 循环遍历内容 开始-->
+            <% articles.forEach(item => { %>
+                <div class="col my-3">
+                    <div class="card h-100">
+                        <img src="<%= item.thumbnail ? item.thumbnail : 'holder.js/100px150' %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <!-- 标题遍历 -->
+                                <%= item.title %>
+                            </h5>
+                            <!-- 时间格式处理为本地时间 -->
+                            <p class="card-text"><small class="text-muted"><%= item.time.toLocaleString() %></small></p>
+                            <p class="card-text">
+                                <!-- 全局过滤html标签和提取字符串中介于两个指定下标之间的字符 -->
+                                <%= item.content.replace(/<[^>]+>/g, '').substring(0, 20) %>...</p>
+                            <a href="/article/detail/<%= item.id %>" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 循环结束 -->
+                <% }) %>
+        </div>
+    </div>
+    <%- include('footer.html') -%>

@@ -1,0 +1,82 @@
+<%- include('header.html') -%>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <!-- 轮播（Carousel）指标 -->
+            <!-- data-target指事件的目标 -->
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/images/图片1.jpg" class="d-block w-100" style="height:300px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/images/图片2.jpg" class="d-block w-100" style="height:300px" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/images/图片3.jpg" class="d-block w-100" style="height:300px" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">热门推荐</h2>
+        <div class="card-deck">
+            <% hots.forEach(item => { %>
+                <div class="card">
+                    <!-- 缩略图 -->
+                    <img src="<%= item.thumbnail ? item.thumbnail : 'holder.js/100px150' %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <!-- 遍历标题 -->
+                            <%= item.title %>
+                        </h5>
+                        <p class="card-text"><small class="text-muted"><%= item.time.toLocaleString() %>
+                            <!-- 将时间转换成本地时间 -->
+                        </small></p>
+                        <p class="card-text">
+                            <!-- 对内容进行处理 -->
+                            <!-- 实现过滤HTML标签（<>标签中不能包含标签实现过滤HTML标签：/<[^<>]+>/g）/g是全局匹配 -->
+                            <!-- substring() 方法用于提取字符串中介于两个指定下标之间的字符。 -->
+                            <%= item.content.replace(/<[^>]+>/g, '').substring(0, 50) %>...</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <!-- 根据用户选择的id进行匹配 -->
+                        <a href="/article/detail/<%= item.id %>" class="btn btn-primary float-right stretched-link">查看详情</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">最新文章</h2>
+        <div class="row row-cols-4">
+            <% articles.forEach(item => { %>
+                <div class="col my-3">
+                    <div class="card h-100">
+                        <!-- 缩略图thumbnail的用法很简单只需要一个a标签和一个thumbnail的类名即可 -->
+                        <img src="<%= item.thumbnail ? item.thumbnail : 'holder.js/100px150' %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= item.title %>
+                            </h5>
+                            <p class="card-text"><small class="text-muted"><%= item.time.toLocaleString() %></small></p>
+                            <p class="card-text">
+                                <%= item.content.replace(/<[^>]+>/g, '').substring(0, 20) %>...</p>
+                            <a href="/article/detail/<%= item.id %>" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <%- include('footer.html') -%>
