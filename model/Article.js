@@ -76,8 +76,11 @@ class Article extends Model {
         // 总博文数
     static getTotalArticle(categoryId, hot) {
             return new Promise((resolve, reject) => {
+                //初始化
                 let query = ''
+                    //如果文章 id存在，并且文章id不等于-1
                 if (categoryId && categoryId != -1) {
+                    //拼接一下字符串
                     query += ' AND category_id=' + categoryId
                 }
                 if (hot && hot != -1) {
