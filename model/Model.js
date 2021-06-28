@@ -34,8 +34,8 @@ module.exports = class Model {
     static query(sql, params = []) {
         //Promise 是异步编程的一种解决方案，其实是一个构造函数，
         //自己身上有all、reject、resolve这几个方法，原型上有then、catch等方法。
-        // Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）
-        //状态控制（用维护状态、传递状态的方式来使得回调函数能够及时调用，它比传递callback函数要简单、灵活的多）
+        // Promise对象代表一个异步操作，有三种状态：pending（进行中)、fulfilled（已成功)和rejected（已失败)
+        //状态控制（用维护状态、传递状态的方式来使得回调函数能够及时调用，它比传递callback函数要简单、灵活的多)
         return new Promise((resolve, reject) => {
             this.connect()
                 //得到一个promise对象，然后通过调用这个对象的then和catch方法

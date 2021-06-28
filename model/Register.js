@@ -3,7 +3,7 @@ const Model = require('./Model')
 class User extends Model {
     //注册
     static doRegister(username, password) {
-        const sql = 'SELECT id, username FROM `user` WHERE username=? AND `password`=?';
+        const sql = "insert into user(username,password) values('" + users.name + "','" + users.password + "');"
         this.query(sql, [username, password])
             //then方法中接受两个回调，一个成功的回调函数，一个失败的回调函数，并且能在回调函数中拿到成功的数据和失败的原因
             .then(resolve)

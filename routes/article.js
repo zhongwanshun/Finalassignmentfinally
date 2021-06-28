@@ -4,7 +4,7 @@ const article = require('../middleware/article')
 const category = require('../middleware/category')
 const auth = require('../middleware/auth')
 
-//使用中间件（获取全部类内容,获取用户是否走验证登陆---->决定能不能修改）
+//使用中间件（获取全部类内容,获取用户是否走验证登陆---->决定能不能修改)
 articleApp.use(category.getCategories, auth.getUser)
 
 

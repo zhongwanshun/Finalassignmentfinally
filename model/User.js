@@ -6,7 +6,7 @@ class User extends Model {
     static doLogin(username, password) {
             return new Promise((resolve, reject) => {
                 const sql = 'SELECT id, username FROM `user` WHERE username=? AND `password`=?'
-                    //给sql语句中的占位符进行赋值的参数数组（也就是两个问号）
+                    //给sql语句中的占位符进行赋值的参数数组（也就是两个问号)
                 this.query(sql, [username, password])
                     //then方法中接受两个回调，一个成功的回调函数，一个失败的回调函数，并且能在回调函数中拿到成功的数据和失败的原因
                     .then(resolve)

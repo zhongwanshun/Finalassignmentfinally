@@ -12,19 +12,19 @@ class Article extends Model {
         }
         // 获取文章列表
     static getArticles() {
-            //利用promise来控制高并发，因为他有三个状态（完成，未完成，失败），并且状态可以由未完成到完成，或者从未完成到失败，而且这个状态只会发生一次
+            //利用promise来控制高并发，因为他有三个状态（完成，未完成，失败)，并且状态可以由未完成到完成，或者从未完成到失败，而且这个状态只会发生一次
             return new Promise((resolve, reject) => {
-                //根据时间降序显示（注意同时获取了缩略图）
+                //根据时间降序显示（注意同时获取了缩略图)
                 const sql = 'SELECT id, title, content, `time`, thumbnail FROM article ORDER BY `time` DESC'
                 this.query(sql)
                     .then(resolve)
                     .catch(reject)
             })
         }
-        // 获取指定类目的文章列表（根据指定类的id）
+        // 获取指定类目的文章列表（根据指定类的id)
     static getArticlesByCategoryId(categoryId) {
-            //利用promise来控制高并发，因为他有三个状态（完成，未完成，失败），
-            // 并且状态可以由未完成到完成，或者从未完成到失败，而且这个状态只会发生一次（更安全）
+            //利用promise来控制高并发，因为他有三个状态（完成，未完成，失败)，
+            // 并且状态可以由未完成到完成，或者从未完成到失败，而且这个状态只会发生一次（更安全)
             return new Promise((resolve, reject) => {
                 //根据时间降序排列
                 const sql = 'SELECT id, title, content, `time`, thumbnail FROM article WHERE category_id=? ORDER BY `time` DESC'
@@ -73,7 +73,7 @@ class Article extends Model {
                     .catch(reject)
             })
         }
-        // 总博文数
+        // 总文章数
     static getTotalArticle(categoryId, hot) {
             return new Promise((resolve, reject) => {
                 //初始化

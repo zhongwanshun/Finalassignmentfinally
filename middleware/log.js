@@ -22,7 +22,7 @@ module.exports = {
                     //登录
                     handle: req.log.handle,
                     //获取ip地址
-                    // 它主要是切割字符串，结果返回由字符串元素组成的一个列表（用：分割字符串）{[限制长度]}
+                    // 它主要是切割字符串，结果返回由字符串元素组成的一个列表（用：分割字符串){[限制长度]}
                     ip: req.ip.split(':')[3] ? req.ip.split(':')[3] : 'localhost',
                     time: new Date() //返回最新时间
                 }

@@ -1,13 +1,13 @@
 <%- include('header.html') -%>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <!-- 轮播（Carousel）指标 -->
+            <!-- 轮播（Carousel)指标 -->
             <!-- data-target指事件的目标 -->
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <!-- 轮播（Carousel）项目 -->
+        <!-- 轮播（Carousel)项目 -->
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/images/图片1.jpg" class="d-block w-100" style="height:300px" alt="...">
@@ -44,7 +44,7 @@
                         </small></p>
                         <p class="card-text">
                             <!-- 对内容进行处理 -->
-                            <!-- 实现过滤HTML标签（<>标签中不能包含标签实现过滤HTML标签：/<[^<>]+>/g）/g是全局匹配 -->
+                            <!-- 实现过滤HTML标签（<>标签中不能包含标签实现过滤HTML标签：/<[^<>]+>/g)/g是全局匹配 -->
                             <!-- substring() 方法用于提取字符串中介于两个指定下标之间的字符。 -->
                             <%= item.content.replace(/<[^>]+>/g, '').substring(0, 50) %>...</p>
                     </div>

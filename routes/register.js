@@ -1,6 +1,6 @@
 const express = require('express')
 const log = require('../middleware/log');
-const { getNextArticleById } = require('../model/Article');
+const getNextArticleById = require('../model/Article');
 const registerApp = express();
 const User = require('../model/Register')
 
